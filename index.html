@@ -8,10 +8,30 @@
 		
 		<!--  花火のアニメーション再生に必要  -->
 		<script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
-		<!-- 
-		この度 head-JavaScript は data-headCode-JavaScriptへと移転しました。
-			　ーーー長らくご利用いただき誠にありがとうございました。ーーー -->
-		<script src = "./data/headCode.js"></script>
+		<script>
+		AFRAME.registerComponent('cursor-listener', {
+    		init: function () {
+			this.el.addEventListener('raycaster-intersected', evt => {
+   		     this.raycaster = evt.detail.el;
+   		   });
+   		   this.el.addEventListener('raycaster-intersected-cleared', evt => {
+   		     this.raycaster = null;
+   		   });
+  		  },
+
+  		  // 毎フレームの処理
+  		  tick: function () {
+  		      if (!this.raycaster) { return; }  // Not intersecting.
+  		      let intersection = this.raycaster.components.raycaster.getIntersection(this.el).point;
+  		      if (!intersection) { return; } // Not intersecting
+  		      // 箱の座標を衝突点にセット
+  		      intersection.y += 0.5;
+  		      new_gltf_model.setAttribute('position', intersection);
+  		      //new_box.setAttribute('rotation', cam.getAttribute('rotation'));
+  		  	}
+ 		});
+
+		</script>
 
 	</head>
 
@@ -47,52 +67,6 @@
 				<a-plane cursor-listener id="target" position="0 0 -2" scale="25 15 1" opacity="0"></a-plane>
 				--> 
 			</a-entity>
-
-			<!--  たぶん　つかわなくていい  -->
-			<!--
-			<a-box
-				id = "obj"
-				position = "0 0 0"
-				rotation = "0 0 0"
-				color = "yellow">
-			</a-box>
-			-->
-			<!--
-			<a-entity
-                id = "taihou"
-                position = "0 0 -5"
-                rotation = "0 0 0"
-                scale = "1 1 1">
-                <a-box
-                    id = "taihouNoDodai"
-                    position = "-1 0 0"
-                    scale = "1 1 1"
-                    color = "red"
-                    raycaster-listen>
-                </a-box>
-                <a-cylinder
-                    id = "taihouNoTutu"
-                    position = "1 0 0"
-                    scale = "1 1 1"
-                    color = "red"
-                    raycaster-listen>
-                </a-cylinder>
-            </a-entity>
-			-->
-
-			<!--  これは使う？  -->
-			<!--
-            <a-assets>
-                <a-assets-item id = "model" src="./data/花火.glb">
-            </a-assets>
-            <a-gltf-model id = "hanabi"
-                dynamic-body = "shape: cube; mass: 1"
-                position = "0 0 0"
-                raycaster-listens
-                src = "#model">
-            </a-gltf-model>
-            -->
-
 		</a-scene>
 
 		<!-- 生成用 -->
@@ -107,7 +81,64 @@
 
 
 		<!--JS用-->
+		<script>
 
+		let scene = document.querySelector('a-scene');
+		var pNumber = 12;
+		var pipes = [];
+		var childs = [];
+
+		for (let i = 0; i < pNumber; i++) {
+
+			new_gltf_model = document.createElement('a-gltf-model');
+			new_gltf_model.setAttribute('id', 'tube');
+			new_gltf_model.setAttribute('dynamic-body', 'shape: cube; mass: 1');
+			new_gltf_model.setAttribute('position', '0 0 0');
+			new_gltf_model.setAttribute('src', '#model-tube');
+
+			pipes.push(new_gltf_model);
+
+
+			let pos = pipes[i].getAttribute('position');
+			pos.x = Math.random() * 25 - 12.5;
+			pos.y = 0.25;
+			pos.z = Math.random() * 25 - 12.5;
+			pipes[i].setAttribute('position', pos);
+			pipes[i].setAttribute('id', i);
+			scene.appendChild(pipes[i]);
+
+			let bool = false;
+			childs.push(bool);
+		}
+
+
+		AFRAME.registerComponent('box-colider', {
+			tick: function () {
+				let pos = this.el.getAttribute('position');
+				for (let i = 0; i < pNumber; i++) {
+
+					let p = pipes[i].getAttribute('position');
+
+					if (!childs[i]) {
+
+						if (p.x > pos.x - 0.5 && p.x < pos.x + 0.5 &&
+							p.y > pos.y - 0.5 && p.y < pos.y + 0.5 &&
+							p.z > pos.z - 0.5 && p.z < pos.z + 0.5) {
+							childs[i] = true;
+						}
+
+					} else {
+
+						p.x = pos.x - 0.46 + (0.081 * i);
+						p.y = pos.y + 0.75;
+						p.z = pos.z - 0.46;
+						pipes[i].setAttribute('position', p);
+					}
+
+				}
+			}
+		});
+		</script>
 		<!--<script src="./data/tutorial.js"></script>-->
 		<script src="./data/tsts.js"></script>
 	</body>
