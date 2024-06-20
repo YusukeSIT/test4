@@ -18,7 +18,7 @@ new_gltf_model.setAttribute('id', 'frame');
 //new_gltf_model.setAttribute('dynamic-body', 'shape: cube; mass: 1');
 new_gltf_model.setAttribute('position', '0 -5 -5');
 new_gltf_model.setAttribute('rotation', '0 0 0');
-new_gltf_model.setAttribute('scale', '0.2 0.2 0.2')
+new_gltf_model.setAttribute('scale', '0.1 0.1 0.1')
 new_gltf_model.setAttribute('src', '#model-frame');
 new_gltf_model.setAttribute('box-colider', '');
 
