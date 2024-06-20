@@ -117,5 +117,5 @@ function hanabi(x, y, z)
                 
             }
             upMove();
-        }, 10)
+        }, 30)
 }
