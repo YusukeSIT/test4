@@ -24,6 +24,7 @@ scene.appendChild(new_gltf_model);
 new_assets_item = document.createElement('a-assets-item');
 new_assets_item.setAttribute('id', 'model-tube');
 new_assets_item.setAttribute('src', './data/tube.glb');
+new_assets_item.setAttribute('box-colider', '');
 
 new_assets.appendChild(new_assets_item);
 
