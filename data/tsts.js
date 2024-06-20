@@ -56,5 +56,6 @@ function tenka() {
   if (!bool) {
     document.getElementById('ui').setAttribute('class', 'permission_ui');
     document.getElementById('fire').setAttribute('class', 'center_ui');
+    document.getElementById('main').setAttribute('style', 'position: static');
   }
 }

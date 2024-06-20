@@ -53,7 +53,7 @@
 		vr-mode-uiをfalseにすることで右下の謎のボタンを削除(Androidだとできてない？)
 		id="main"は今のところ意味なし
 		-->
-		<a-scene id="main" device-orientation-permission-ui="enabled: false" embedded arjs vr-mode-ui="enabled: false;" style="display: none">
+		<a-scene id="main" device-orientation-permission-ui="enabled: false" embedded arjs vr-mode-ui="enabled: false;" style="display: none; position: static;">
 			<a-entity id='camera' camera look-controls="touchEnabled: false;" wasd-controls position="0 5 0"></a-entity>
 				
 				<!--移動オブジェクトの移動先の取得-->
