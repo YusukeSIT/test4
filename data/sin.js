@@ -1,5 +1,3 @@
-let scene = document.querySelector('a-scene');
-
 let hitama = 100;
 
 //hanabi();
@@ -58,7 +56,7 @@ function hanabi(x, z)
         hinoObj[i].setAttribute('position', hinoPos[i][0] + ' ' + hinoPos[i][1] + ' ' + hinoPos[i][2]);
         hinoObj[i].setAttribute('scale', '0.1 0.1 0.1');
                 
-        scene.appendChild(hinoObj[i]);
+        document.querySelector('a-scene').appendChild(hinoObj[i]);
     }
 
     document.addEventListener('DOMContentLoaded', function()
@@ -93,7 +91,7 @@ function hanabi(x, z)
                 {
                     for(let i = 0; i < hitama; i++)
                     {
-                        scene.removeChild(hinoObj[i]);
+                        document.querySelector('a-scene').removeChild(hinoObj[i]);
                     }
                 }
                 else
