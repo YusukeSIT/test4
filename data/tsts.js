@@ -2,7 +2,7 @@ let new_assets;
 let new_assets_item;
 let new_gltf_model;
 var bool = false;
-  
+
 new_assets = document.createElement('a-assets');
 
 new_assets_item = document.createElement('a-assets-item');

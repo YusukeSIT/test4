@@ -1,7 +1,7 @@
 let hitama = 40;
 
 //hanabi();
-function hanabi(x, z)
+function hanabi(x, y, z)
 {
     let hinoObj = new Array(hitama);
 
@@ -11,16 +11,16 @@ function hanabi(x, z)
 
     // 爆発する座標
     let bomPosX = x;
-    let bomPosY = 5 + ( Math.floor(Math.random() * 10) - 5);
+    let bomPosY = y;
     let bomPosZ = z;
 
 
     for(let i = 0; i < hitama; i++)
     {
         hinoPos[i] = new Array(3);
-        hinoPos[i][0] = bomPosX;
+        hinoPos[i][0] = x;
         hinoPos[i][1] = bomPosY - 20;
-        hinoPos[i][2] = bomPosZ;
+        hinoPos[i][2] = z;
 
         hinoVec[i] = new Array(3);
         hinoRot[i] = new Array(3);
@@ -59,59 +59,60 @@ function hanabi(x, z)
         document.querySelector('a-scene').appendChild(hinoObj[i]);
     }
 
-    document.addEventListener('DOMContentLoaded', function()
-    {
-        let time;
-        let bom = 0;
-        let upSpeed = Math.floor( Math.random() * 10) / 100;
-        let bomspeed = 0.1;
-        let sa = 2;
-        let upMove = function()
-        {
-            if(bom == 0)
+    setInterval(
+        function loop() {
+            let time;
+            let bom = 0;
+            let upSpeed = Math.floor( Math.random() * 10) / 100;
+            let bomspeed = 0.1;
+            let sa = 2;
+            console.log("ts");
+            let upMove = function()
             {
-                for(let i = 0; i < hitama; i++)
-                {
-                    hinoPos[i][1] = hinoPos[i][1] + upSpeed;
-                }
-                if(hinoPos[0][1] >= bomPosY)
-                {
-                    bom = 1;
-                    time = new Date();
-                }
-                requestAnimationFrame(upMove.bind(null));
-                for(let i = 0; i < hitama; i++)
-                {
-                    hinoObj[i].setAttribute('position', hinoPos[i][0] + ' ' + hinoPos[i][1] + ' ' + hinoPos[i][2]);
-                }
-            }
-            else if(bom == 1)
-            {
-                if( new Date().getSeconds() - time.getSeconds() >= sa)
+                if(bom == 0)
                 {
                     for(let i = 0; i < hitama; i++)
                     {
-                        document.querySelector('a-scene').removeChild(hinoObj[i]);
+                        hinoPos[i][1] = hinoPos[i][1] + upSpeed;
+                    }
+                    if(hinoPos[0][1] >= bomPosY)
+                    {
+                        bom = 1;
+                        time = new Date();
+                    }
+                    requestAnimationFrame(upMove.bind(null));
+                    for(let i = 0; i < hitama; i++)
+                    {
+                        hinoObj[i].setAttribute('position', hinoPos[i][0] + ' ' + hinoPos[i][1] + ' ' + hinoPos[i][2]);
                     }
                 }
-                else
+                else if(bom == 1)
                 {
-                    for(let i = 0; i < hitama; i++)
+                    if( new Date().getSeconds() - time.getSeconds() >= sa)
                     {
-                        for(let j = 0; j < 3; j++)
+                        for(let i = 0; i < hitama; i++)
                         {
-                            hinoPos[i][j] = hinoPos[i][j] + ( hinoVec[i][j] * bomspeed);
+                            document.querySelector('a-scene').removeChild(hinoObj[i]);
                         }
                     }
+                    else
+                    {
+                        for(let i = 0; i < hitama; i++)
+                        {
+                            for(let j = 0; j < 3; j++)
+                            {
+                                hinoPos[i][j] = hinoPos[i][j] + ( hinoVec[i][j] * bomspeed);
+                            }
+                        }
+                    }
+                    requestAnimationFrame(upMove.bind(null));
+                    for(let i = 0; i < hitama; i++)
+                    {
+                        hinoObj[i].setAttribute('position', hinoPos[i][0] + ' ' + hinoPos[i][1] + ' ' + hinoPos[i][2]);
+                    }
                 }
-                requestAnimationFrame(upMove.bind(null));
-                for(let i = 0; i < hitama; i++)
-                {
-                    hinoObj[i].setAttribute('position', hinoPos[i][0] + ' ' + hinoPos[i][1] + ' ' + hinoPos[i][2]);
-                }
+                
             }
-            
-        }
-        upMove();
-    });
+            upMove();
+        }, 10)
 }
