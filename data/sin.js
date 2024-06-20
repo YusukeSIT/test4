@@ -1,4 +1,4 @@
-let hitama = 100;
+let hitama = 40;
 
 //hanabi();
 function hanabi(x, z)
