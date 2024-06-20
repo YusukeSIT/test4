@@ -62,7 +62,7 @@
 			<a-entity cursor="rayOrigin: mouse" raycaster="objects: #target;"></a-entity> 
 
 			<!--rayの衝突用-->
-			<a-plane cursor-listener id="target" rotation = "-90 0 0" position="0 0 0" scale="40 40 1" color = "red" opacity = "0"></a-plane>
+			<a-plane cursor-listener id="target" rotation = "-90 0 0" position="0 0 0" scale="255 255 1" color = "red" opacity = "0"></a-plane>
 			
 		</a-scene>
 
@@ -137,7 +137,7 @@
 			let ranWait = Math.random() * 2500;
 
 			if (childs[ranNum] == true) {
-				hanabi(pipes[ranNum].getAttribute('position').x, pipes[ranNum].getAttribute('position').y, pipes[ranNum].getAttribute('position').z);
+				hanabi(pipes[ranNum].getAttribute('position').x - 0.38*3, pipes[ranNum].getAttribute('position').y, pipes[ranNum].getAttribute('position').z);
 			}
 
 			setTimeout(() => {tenka()}, ranWait);

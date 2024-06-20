@@ -21,7 +21,7 @@ function hanabi(x, y, z)
     {
         hinoPos[i] = new Array(3);
         hinoPos[i][0] = x;
-        hinoPos[i][1] = bomPosY - 20;
+        hinoPos[i][1] = bomPosY - 19.7;
         hinoPos[i][2] = z;
 
         hinoVec[i] = new Array(3);
