@@ -85,7 +85,7 @@
 			new_gltf_model = document.createElement('a-gltf-model');
 			new_gltf_model.setAttribute('id', 'i');
 			//new_gltf_model.setAttribute('dynamic-body', 'shape: cube; mass: 1');
-			new_gltf_model.setAttribute('scale', '0.4 0.4 0.4');
+			new_gltf_model.setAttribute('scale', '0.6 0.6 0.6');
 			new_gltf_model.setAttribute('position', '0 0 0');
 			new_gltf_model.setAttribute('src', '#model-tube');
 
@@ -123,7 +123,7 @@
 
 					} else {
 
-						p.x = pos.x - 0.46 + (0.2 * i);
+						p.x = pos.x - 0.46 + (0.25 * i);
 						p.y = pos.y + 0.75;
 						p.z = pos.z - 0.46;
 						pipes[i].setAttribute('position', p);
