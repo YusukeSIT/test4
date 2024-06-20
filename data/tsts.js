@@ -37,7 +37,7 @@ document.addEventListener('click', () => {
     del.setAttribute('class', 'deleted_ui');
   });
   document.getElementById('main').removeAttribute('style');
-  document.getElementById('b1').removeAttribute('class');
+  document.getElementById('b1').removeAttribute('style');
   if (window.DeviceMotionEvent && window.DeviceMotionEvent.requestPermission) {
     DeviceMotionEvent.requestPermission()
                      .then((state) => {
@@ -56,7 +56,7 @@ document.addEventListener('click', () => {
 function tenka() {
   if (!bool) {
     document.getElementById('ui').setAttribute('class', 'permission_ui');
-    document.getElementById('fire').setAttribute('style', 'color: black');
+    document.getElementById('fire').setAttribute('style', 'center_ui');
     document.getElementById('main').setAttribute('style', 'position: static');
   }
 }
