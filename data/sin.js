@@ -11,7 +11,7 @@ function hanabi(x, y, z)
 
     // 爆発する座標
     let bomPosX = x;
-    let bomPosY = y;
+    let bomPosY = y+20;
     let bomPosZ = z;
 
 
@@ -59,14 +59,13 @@ function hanabi(x, y, z)
         document.querySelector('a-scene').appendChild(hinoObj[i]);
     }
 
-    setInterval(
+    let timeoutId = setInterval(
         function loop() {
             let time;
             let bom = 0;
             let upSpeed = Math.floor( Math.random() * 10) / 100;
             let bomspeed = 0.1;
             let sa = 2;
-            console.log("ts");
             let upMove = function()
             {
                 if(bom == 0)
@@ -94,6 +93,7 @@ function hanabi(x, y, z)
                         {
                             document.querySelector('a-scene').removeChild(hinoObj[i]);
                         }
+                        clearInterval(timeoutId);
                     }
                     else
                     {
@@ -114,5 +114,5 @@ function hanabi(x, y, z)
                 
             }
             upMove();
-        }, 10)
+        })
 }
