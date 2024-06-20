@@ -15,6 +15,8 @@ function hanabi(x, y, z)
     let bomPosZ = z;
 
 
+    console.log("x:" + x + ", y:" + y + ", z:" + z);
+
     for(let i = 0; i < hitama; i++)
     {
         hinoPos[i] = new Array(3);
@@ -93,6 +95,7 @@ function hanabi(x, y, z)
                         {
                             document.querySelector('a-scene').removeChild(hinoObj[i]);
                         }
+                        console.log("clear");
                         clearInterval(timeoutId);
                     }
                     else
