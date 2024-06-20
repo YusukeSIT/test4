@@ -33,6 +33,9 @@
 
 		</script>
 
+		<script src="./data/sin.js"></script>
+
+
 	</head>
 
 	<!--ズームなどの一部動作の制限-->
@@ -41,7 +44,6 @@
 		<!--iOSにおいてDeviceMotion取得するために、ユーザーに画面タッチを強制-->
 		<div id="ui" class="permission_ui">
 			<p class="permission_ui center_ui">画面をタッチしてください</p>
-			<p id="fire" class="center_ui">FIRE!</p>
 		</div>
 
 		<!--3D空間-->
@@ -117,7 +119,6 @@
 							p.y > pos.y - 25 && p.y < pos.y + 25 &&
 							p.z > pos.z - 2.5 && p.z < pos.z + 2.5) {
 							childs[i] = true;
-							console.log('succes!');
 						}
 
 					} else {
@@ -131,8 +132,19 @@
 				}
 			}
 		});
+
+		function tenka() {
+
+			let ranNum = Math.floor(Math.random() * pNumber);
+
+			if (childs[i]) {
+				hanabi(pipes[i].x, pipes[i].z);
+			}
+
+			setTimeout(tenka(), Math.random() * 3000);
+		}
 		</script>
-		<!--<script src="./data/tutorial.js"></script>-->
+
 		<script src="./data/tsts.js"></script>
 	</body>
 </html>
