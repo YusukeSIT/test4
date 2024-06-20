@@ -48,6 +48,11 @@ document.addEventListener('click', () => {
   }
 });
 
+var bool = false;
+
 function tenka() {
-  
+  if (!bool) {
+    document.getElementById('ui').setAttribute('class', 'permission_ui');
+    document.getElementById('fire').setAttribute('class', 'center_ui');
+  }
 }
