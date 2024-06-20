@@ -76,7 +76,7 @@
 		<script>
 
 		let scene = document.querySelector('a-scene');
-		var pNumber = 5;
+		var pNumber = 7;
 		var pipes = [];
 		var childs = [];
 
@@ -124,7 +124,7 @@
 					} else {
 
 						p.x = pos.x - 0.66 + (0.35 * i);
-						p.y = pos.y + 0.75;
+						p.y = pos.y;
 						p.z = pos.z - 0.1;
 						pipes[i].setAttribute('position', p);
 					}
