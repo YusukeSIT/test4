@@ -75,8 +75,6 @@
 
 		<!--JS用-->
 		<script>
-
-		let scene = document.querySelector('a-scene');
 		var pNumber = 7;
 		var pipes = [];
 		var childs = [];
@@ -99,7 +97,7 @@
 			pos.z = Math.random() * 25 - 12.5;
 			pipes[i].setAttribute('position', pos);
 			pipes[i].setAttribute('id', i);
-			scene.appendChild(pipes[i]);
+			document.querySelector('a-scene').appendChild(pipes[i]);
 
 			let bool = false;
 			childs.push(bool);

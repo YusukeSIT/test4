@@ -10,7 +10,7 @@ new_assets_item.setAttribute('id', 'model-frame');
 new_assets_item.setAttribute('src', './data/frame.glb');
 
 new_assets.appendChild(new_assets_item);
-scene.appendChild(new_assets);
+document.querySelector('a-scene').appendChild(new_assets);
 
 //　木枠の生成
 new_gltf_model = document.createElement('a-gltf-model');
@@ -22,7 +22,7 @@ new_gltf_model.setAttribute('scale', '0.6 0.6 0.6')
 new_gltf_model.setAttribute('src', '#model-frame');
 new_gltf_model.setAttribute('box-colider', '');
 
-scene.appendChild(new_gltf_model);
+document.querySelector('a-scene').appendChild(new_gltf_model);
 
 new_assets_item = document.createElement('a-assets-item');
 new_assets_item.setAttribute('id', 'model-tube');
