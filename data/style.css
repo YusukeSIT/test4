@@ -10,24 +10,6 @@
 	background-color: rgba(255, 255, 255, 0.3);
 }
 
-#b2 {
-	font-size: 15px;
-	width: 98%;
-	font-weight: bold;
-	position: absolute;
-	left: 20px;
-	bottom: 10%;
-	background-color: rgba(255, 255, 255, 0.3);
-}
-
-#nankadeta{
-	position : absolute;
-
-	left : 40%;
-	top : 50%;
-}
-
-
 /*
 iOS用に一番最初に表示する画面のcss
 center_uiはもともと中央揃えのコードを実装する予定だったが
@@ -38,12 +20,19 @@ center_uiはもともと中央揃えのコードを実装する予定だった�
 	width: 100vw;
 	height: 100vh;
 
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+
 	background-color: #fff;
 
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	position: absolute;
 }
+
 
 .center_ui {
   font-size: 20px;

@@ -47,3 +47,7 @@ document.addEventListener('click', () => {
                      .catch((err) => console.error(err));
   }
 });
+
+function tenka() {
+  
+}
