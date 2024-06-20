@@ -11,7 +11,7 @@ function hanabi(x, y, z)
 
     // 爆発する座標
     let bomPosX = x;
-    let bomPosY = y+50;
+    let bomPosY = y+35;
     let bomPosZ = z;
 
 
@@ -21,7 +21,7 @@ function hanabi(x, y, z)
     {
         hinoPos[i] = new Array(3);
         hinoPos[i][0] = x;
-        hinoPos[i][1] = bomPosY - 30;
+        hinoPos[i][1] = bomPosY - 15;
         hinoPos[i][2] = z;
 
         hinoVec[i] = new Array(3);
