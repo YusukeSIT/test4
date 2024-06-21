@@ -1,10 +1,10 @@
-let hitama = 75;
+let hitama = 100;
 
 //hanabi();
-function hanabi(x, y, z)
+function hanabi(x, y, z, col)
 {
     let hinoObj = new Array(hitama);
-    
+
 
     let hinoPos = new Array(hitama); //１個の火の玉の座標
     let hinoRot = new Array(hitama); //角度
@@ -16,13 +16,14 @@ function hanabi(x, y, z)
     let bomPosZ = z;
 
 
+
     console.log("x:" + x + ", y:" + y + ", z:" + z);
 
     for(let i = 0; i < hitama; i++)
     {
         hinoPos[i] = new Array(3);
         hinoPos[i][0] = x;
-        hinoPos[i][1] = bomPosY - 19.0;
+        hinoPos[i][1] = bomPosY - 40 + 1.0;
         hinoPos[i][2] = z;
 
         hinoVec[i] = new Array(3);
@@ -54,10 +55,10 @@ function hanabi(x, y, z)
 
 
         hinoObj[i] = document.createElement('a-sphere');
-        hinoObj[i].setAttribute('color', 'red');
+        hinoObj[i].setAttribute('color', col);
         hinoObj[i].setAttribute('opacity', '0.5');
         hinoObj[i].setAttribute('position', hinoPos[i][0] + ' ' + hinoPos[i][1] + ' ' + hinoPos[i][2]);
-        hinoObj[i].setAttribute('scale', '0.2 0.2 0.2');
+        hinoObj[i].setAttribute('scale', '0.3 0.3 0.3');
                 
         document.querySelector('a-scene').appendChild(hinoObj[i]);
     }

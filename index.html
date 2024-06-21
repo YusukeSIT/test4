@@ -135,9 +135,17 @@
 		function tenka() {
 			let ranNum = Math.floor(Math.random() * pNumber);
 			let ranWait = Math.random() * 2500;
+			let col;
+			if (ranNum % 3 == 0) {
+				col = 'red';
+			} else if (ranNum % 3 == 1) {
+				col = '#7d7dff';
+			} else {
+				col = '#7dff7d'
+			}
 
 			if (childs[ranNum] == true) {
-				hanabi(pipes[ranNum].getAttribute('position').x - 0.38*3, pipes[ranNum].getAttribute('position').y, pipes[ranNum].getAttribute('position').z);
+				hanabi(pipes[ranNum].getAttribute('position').x - 0.38*3, pipes[ranNum].getAttribute('position').y, pipes[ranNum].getAttribute('position').z, col);
 			}
 
 			setTimeout(() => {tenka()}, ranWait);
