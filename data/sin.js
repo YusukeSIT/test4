@@ -4,6 +4,7 @@ let hitama = 75;
 function hanabi(x, y, z)
 {
     let hinoObj = new Array(hitama);
+    
 
     let hinoPos = new Array(hitama); //１個の火の玉の座標
     let hinoRot = new Array(hitama); //角度
@@ -11,7 +12,7 @@ function hanabi(x, y, z)
 
     // 爆発する座標
     let bomPosX = x;
-    let bomPosY = y+20;
+    let bomPosY = y+40;
     let bomPosZ = z;
 
 
@@ -21,7 +22,7 @@ function hanabi(x, y, z)
     {
         hinoPos[i] = new Array(3);
         hinoPos[i][0] = x;
-        hinoPos[i][1] = bomPosY - 19.3;
+        hinoPos[i][1] = bomPosY - 19.0;
         hinoPos[i][2] = z;
 
         hinoVec[i] = new Array(3);
@@ -56,7 +57,7 @@ function hanabi(x, y, z)
         hinoObj[i].setAttribute('color', 'red');
         hinoObj[i].setAttribute('opacity', '0.5');
         hinoObj[i].setAttribute('position', hinoPos[i][0] + ' ' + hinoPos[i][1] + ' ' + hinoPos[i][2]);
-        hinoObj[i].setAttribute('scale', '0.1 0.1 0.1');
+        hinoObj[i].setAttribute('scale', '0.2 0.2 0.2');
                 
         document.querySelector('a-scene').appendChild(hinoObj[i]);
     }
@@ -66,7 +67,7 @@ function hanabi(x, y, z)
             let time;
             let bom = 0;
             let upSpeed = Math.floor( Math.random() * 10) / 100;
-            let bomspeed = 0.02;
+            let bomspeed = 0.01;
             let sa = 2;
             let upMove = function()
             {
