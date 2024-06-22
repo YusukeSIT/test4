@@ -43,7 +43,7 @@
 
 		<!--iOSにおいてDeviceMotion取得するために、ユーザーに画面タッチを強制-->
 		<div id="ui" class="permission_ui">
-			<p class="permission_ui center_ui">画面をタッチしてください</p>
+			<p id="discription" class="permission_ui center_ui">画面をタッチしてください</p>
 		</div>
 
 		<!--3D空間-->
@@ -95,7 +95,7 @@
 			let pos = pipes[i].getAttribute('position');
 			pos.x = Math.random() * 25 - 12.5;
 			pos.y = 0;
-			pos.z = Math.random() * -25 - 2;
+			pos.z = Math.random() * -25 - 5;
 			pipes[i].setAttribute('position', pos);
 			pipes[i].setAttribute('id', i);
 			document.querySelector('a-scene').appendChild(pipes[i]);

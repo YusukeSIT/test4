@@ -33,20 +33,30 @@ new_assets.appendChild(new_assets_item);
 
 
 document.addEventListener('click', () => {
-  document.querySelectorAll('.permission_ui').forEach((del) => {
-    del.setAttribute('class', 'deleted_ui');
-  });
-  document.getElementById('main').removeAttribute('style');
-  document.getElementById('b1').removeAttribute('style');
   if (window.DeviceMotionEvent && window.DeviceMotionEvent.requestPermission) {
     DeviceMotionEvent.requestPermission()
                      .then((state) => {
                        if (state === 'granted') {
-                       } else {
-                         alert('動作と方向へのアクセスを許可してください');
+
+                          document.querySelectorAll('.permission_ui').forEach((del) => {
+                            del.setAttribute('class', 'deleted_ui');
+                          });
+                          document.getElementById('main').removeAttribute('style');
+                          document.getElementById('b1').removeAttribute('style');
+
+                       } else {                        
+                        document.getElementById("discription").innerHTML = "ブラウザの「カメラ」　「動作の取得」を許可してください"
                        }
                      })
                      .catch((err) => console.error(err));
+  } else {
+
+    document.querySelectorAll('.permission_ui').forEach((del) => {
+      del.setAttribute('class', 'deleted_ui');
+    });
+    document.getElementById('main').removeAttribute('style');
+    document.getElementById('b1').removeAttribute('style');
+
   }
 }, {
   once: true
